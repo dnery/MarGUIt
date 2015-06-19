@@ -17,10 +17,10 @@ public class ServerApp
 
             screen.getScreen().startScreen();
 
-            DefaultView defaultView = new DefaultView("Server management");
-            DefaultContext.getContext().setDefaultWindow(defaultView);
-            DefaultController.getController().engageDefaultControls();
-            screen.showWindow(defaultView, GUIScreen.Position.CENTER);
+            ManagementView managementView = new ManagementView("Server management");
+            DefaultContext.getContext().setDefaultWindow(managementView);
+            DefaultController.getController().engageManagementControls();
+            screen.showWindow(managementView, GUIScreen.Position.CENTER);
 
             screen.getScreen().stopScreen();
         } catch (Exception e) {

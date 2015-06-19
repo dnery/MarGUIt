@@ -1,12 +1,10 @@
 package br.usp.icmc.ssc0103;
 
-import com.googlecode.lanterna.gui.Window;
-
 import java.net.ServerSocket;
 
 public class DefaultContext
 {
-    private Window       defaultWindow;
+    private AbstractView defaultWindow;
     private ServerSocket defaultSSocket;
 
     // Eager singleton initializer
@@ -18,11 +16,11 @@ public class DefaultContext
     // Eager singleton context getter
     public static DefaultContext getContext() { return CONTEXT; }
 
-    public Window getDefaultWindow() { return defaultWindow; }
+    public AbstractView getDefaultWindow() { return defaultWindow; }
 
     public ServerSocket getDefaultSSocket() { return defaultSSocket; }
 
-    public void setDefaultWindow(Window defaultWindow)
+    public void setDefaultWindow(AbstractView defaultWindow)
     {
         this.defaultWindow = defaultWindow;
     }

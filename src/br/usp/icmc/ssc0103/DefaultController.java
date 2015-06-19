@@ -1,6 +1,5 @@
 package br.usp.icmc.ssc0103;
 
-import com.googlecode.lanterna.gui.Window;
 import com.googlecode.lanterna.gui.component.ActionListBox;
 import com.googlecode.lanterna.gui.component.Button;
 import com.googlecode.lanterna.gui.component.Label;
@@ -17,15 +16,15 @@ public class DefaultController
     private static final DefaultController CONTROLLER = new DefaultController();
 
     // Eager singleton constructor
-    private DefaultController(){}
+    private DefaultController() {}
 
     // Eager singleton context getter
-    public static DefaultController getController(){ return CONTROLLER;}
+    public static DefaultController getController() { return CONTROLLER;}
 
-    public void engageDefaultControls() throws UnknownHostException
+    public void engageManagementControls() throws UnknownHostException
     {
         // Contextualize
-        Window defaultWindow = DefaultContext.getContext().getDefaultWindow();
+        AbstractView defaultWindow = DefaultContext.getContext().getDefaultWindow();
         ServerSocket defaultSSocket = DefaultContext.getContext().getDefaultSSocket();
 
         // Define panes
@@ -38,24 +37,33 @@ public class DefaultController
 
         // Primary pane elements
         primaryControls.addComponent(new Button("Insert Product", () -> {
-            MessageBox.showMessageBox(defaultWindow.getOwner(), "Insert new product", "Do it.");
+            MessageBox.showMessageBox(defaultWindow.expose().getOwner(),
+                                      "Insert new product",
+                                      "Do it.");
         }));
         primaryControls.addComponent(new Button("Browse Stock", () -> {
-            MessageBox.showMessageBox(defaultWindow.getOwner(), "Browse stock products", "Do it.");
+            MessageBox.showMessageBox(defaultWindow.expose().getOwner(),
+                                      "Browse stock products",
+                                      "Do it.");
         }));
         primaryControls.addComponent(new Button("Manage Stock", () -> {
-            MessageBox.showMessageBox(defaultWindow.getOwner(), "Manage stock products", "Do it.");
+            MessageBox.showMessageBox(defaultWindow.expose().getOwner(),
+                                      "Manage stock products",
+                                      "Do it.");
         }));
-        primaryControls.addComponent(new Button("Quit", defaultWindow::close));
+        primaryControls.addComponent(new Button("Quit", defaultWindow.expose()::close));
 
         // Secondary pane elements
         ActionListBox listBox = new ActionListBox();
-        listBox.addAction("Action 1", () -> MessageBox.showMessageBox(defaultWindow.getOwner(),
-                                                                      "Action 1", "Do it."));
-        listBox.addAction("Action 2", () -> MessageBox.showMessageBox(defaultWindow.getOwner(),
-                                                                      "Action 2", "Do it."));
-        listBox.addAction("Action 3", () -> MessageBox.showMessageBox(defaultWindow.getOwner(),
-                                                                      "Action 3", "Do it."));
+        listBox.addAction("Action 1", () -> {
+            MessageBox.showMessageBox(defaultWindow.expose() .getOwner(), "Action 1", "Do it.");
+        });
+        listBox.addAction("Action 2", () -> {
+            MessageBox.showMessageBox(defaultWindow.expose() .getOwner(), "Action 2", "Do it.");
+        });
+        listBox.addAction("Action 3", () -> {
+            MessageBox.showMessageBox(defaultWindow.expose() .getOwner(), "Action 3", "Do it.");
+        });
         secondaryControls.addComponent(listBox);
 
         // Info display pane elements
@@ -63,18 +71,18 @@ public class DefaultController
 
         // Server info pane elements
         serverInfoPanel.addComponent(new Label("INet Hostname: " +
-                                                InetAddress.getLocalHost().getCanonicalHostName() +
-                                                "\nINet Address: " +
-                                                InetAddress.getLocalHost().getHostAddress() +
-                                                "\nRandom port: " +
-                                                defaultSSocket.getLocalPort()));
+                                               InetAddress.getLocalHost().getCanonicalHostName() +
+                                               "\nINet Address: " +
+                                               InetAddress.getLocalHost().getHostAddress() +
+                                               "\nRandom port: " +
+                                               defaultSSocket.getLocalPort()));
 
         // Assemble final layout
         topLayout.addComponent(primaryControls);
         topLayout.addComponent(secondaryControls);
         topLayout.addComponent(infoDisplayPanel);
         botLayout.addComponent(serverInfoPanel);
-        defaultWindow.addComponent(topLayout);
-        defaultWindow.addComponent(botLayout);
+        defaultWindow.expose().addComponent(topLayout);
+        defaultWindow.expose().addComponent(botLayout);
     }
 }
