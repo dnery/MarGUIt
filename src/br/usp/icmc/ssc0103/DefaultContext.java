@@ -1,10 +1,12 @@
 package br.usp.icmc.ssc0103;
 
+import com.googlecode.lanterna.gui.GUIScreen;
+
 import java.net.ServerSocket;
 
 public class DefaultContext
 {
-    private AbstractView defaultWindow;
+    private GUIScreen    defaultParent;
     private ServerSocket defaultSSocket;
 
     // Eager singleton initializer
@@ -16,13 +18,13 @@ public class DefaultContext
     // Eager singleton context getter
     public static DefaultContext getContext() { return CONTEXT; }
 
-    public AbstractView getDefaultWindow() { return defaultWindow; }
+    public GUIScreen getDefaultParent() { return defaultParent; }
 
     public ServerSocket getDefaultSSocket() { return defaultSSocket; }
 
-    public void setDefaultWindow(AbstractView defaultWindow)
+    public void setDefaultParent(GUIScreen defaultParent)
     {
-        this.defaultWindow = defaultWindow;
+        this.defaultParent = defaultParent;
     }
 
     public void setDefaultSSocket(ServerSocket defaultSSocket)

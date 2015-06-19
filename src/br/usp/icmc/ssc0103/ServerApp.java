@@ -12,16 +12,11 @@ public class ServerApp
     public static void main(String[] args)
     {
         try {
-            ServerSocket serverSocket = new ServerSocket(0);
-            DefaultContext.getContext().setDefaultSSocket(serverSocket);
+            DefaultContext.getContext().setDefaultSSocket(new ServerSocket(0));
 
             screen.getScreen().startScreen();
-
-            ManagementView managementView = new ManagementView("Server management");
-            DefaultContext.getContext().setDefaultWindow(managementView);
-            DefaultController.getController().engageManagementControls();
-            screen.showWindow(managementView, GUIScreen.Position.CENTER);
-
+            DefaultContext.getContext().setDefaultParent(screen);
+            (new ManagementView("Server side management")).display();
             screen.getScreen().stopScreen();
         } catch (Exception e) {
             System.err.print(e.getMessage());
