@@ -1,5 +1,9 @@
 package br.usp.icmc.ssc0103;
 
+import br.usp.icmc.ssc0103.AbstractResources.AbstractTableEntry;
+import br.usp.icmc.ssc0103.Models.CustomerEntry;
+import br.usp.icmc.ssc0103.Models.ProductEntry;
+import br.usp.icmc.ssc0103.Models.ReportEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -21,9 +25,12 @@ public class DefaultDatabase
     private ObservableList<ReportEntry>   observableReports;
 
     private final File defaultDatabaseRoot = new File("database");
-    private final File customersFile       = new File(defaultDatabaseRoot + "/customers.csv");
-    private final File productsFile        = new File(defaultDatabaseRoot + "/products.csv");
-    private final File reportsFile         = new File(defaultDatabaseRoot + "/reports.csv");
+    private final File customersFile       = new File(defaultDatabaseRoot +
+                                                      "/customers.csv");
+    private final File productsFile        = new File(defaultDatabaseRoot +
+                                                      "/products.csv");
+    private final File reportsFile         = new File(defaultDatabaseRoot +
+                                                      "/reports.csv");
 
     // Static block singleton initiator
     private static DefaultDatabase INSTANCE;
@@ -62,53 +69,59 @@ public class DefaultDatabase
 
         // Customers list: write on event
         observableCustomers = FXCollections.observableList(customers);
-        observableCustomers.addListener((ListChangeListener<AbstractTableEntry>) c -> {
-            try {
-                serializeAndWrite(customersFile, customers);
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
-        });
+        observableCustomers.addListener(
+                (ListChangeListener<AbstractTableEntry>) c -> {
+                    try {
+                        serializeAndWrite(customersFile, customers);
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
+                });
 
         // Products list: write on event
         observableProducts = FXCollections.observableList(products);
-        observableProducts.addListener((ListChangeListener<AbstractTableEntry>) c -> {
-            try {
-                serializeAndWrite(productsFile, products);
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
-        });
+        observableProducts.addListener(
+                (ListChangeListener<AbstractTableEntry>) c -> {
+                    try {
+                        serializeAndWrite(productsFile, products);
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
+                });
 
         // Reports list: write on event
         observableReports = FXCollections.observableList(reports);
-        observableReports.addListener((ListChangeListener<AbstractTableEntry>) c -> {
-            try {
-                serializeAndWrite(reportsFile, reports);
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
-        });
+        observableReports.addListener(
+                (ListChangeListener<AbstractTableEntry>) c -> {
+                    try {
+                        serializeAndWrite(reportsFile, reports);
+                    } catch (IOException e) {
+                        System.err.println(e.getMessage());
+                    }
+                });
     }
 
     public void newProduct(String... arguments) throws ParseException
     {
-        if (products.stream().noneMatch(product -> product.getName().equals(arguments[0]))) {
+        if (products.stream().noneMatch(product -> product.getName().equals(
+                arguments[0]))) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
             // Add to observable list
-            observableProducts.add(new ProductEntry(arguments[0],
-                                                    Double.parseDouble(arguments[1]),
-                                                    arguments[2],
-                                                    dateFormat.parse(arguments[3]).getTime(),
-                                                    Integer.parseInt(arguments[4])));
+            observableProducts.add(
+                    new ProductEntry(arguments[0],
+                                     Double.parseDouble(arguments[1]),
+                                     arguments[2],
+                                     dateFormat.parse(arguments[3]).getTime(),
+                                     Integer.parseInt(arguments[4])));
 
             // Add to regular list
-            products.add(new ProductEntry(arguments[0],
-                                          Double.parseDouble(arguments[1]),
-                                          arguments[2],
-                                          dateFormat.parse(arguments[3]).getTime(),
-                                          Integer.parseInt(arguments[4])));
+            products.add(
+                    new ProductEntry(arguments[0],
+                                     Double.parseDouble(arguments[1]),
+                                     arguments[2],
+                                     dateFormat.parse(arguments[3]).getTime(),
+                                     Integer.parseInt(arguments[4])));
         }
     }
 
@@ -137,11 +150,13 @@ public class DefaultDatabase
         fileReader.close();
     }
 
-    public void serializeAndWrite(File filePointer, List<? extends AbstractTableEntry> bufferedList)
-            throws IOException
+    public void serializeAndWrite(File filePointer,
+                                  List<? extends AbstractTableEntry>
+                                          bufferedList) throws IOException
     {
         // Write to generic entries file
-        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(filePointer, false));
+        BufferedWriter fileWriter = new BufferedWriter(new FileWriter(
+                filePointer, false));
         for (AbstractTableEntry abstractTableEntry : bufferedList)
             fileWriter.write(abstractTableEntry.serialize() + "\n");
         fileWriter.close();
