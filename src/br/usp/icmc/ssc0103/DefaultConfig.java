@@ -1,8 +1,8 @@
 package br.usp.icmc.ssc0103;
 
-import br.usp.icmc.ssc0103.AbstractResources.FXMLController;
-import br.usp.icmc.ssc0103.ConcreteResources.FXMLWindow;
-import br.usp.icmc.ssc0103.Controls.ServerGUIController;
+import br.usp.icmc.ssc0103.fxmlcontrollers.ServerGUIControls;
+import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
+import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
 import javafx.stage.Stage;
 
 public class DefaultConfig
@@ -22,13 +22,12 @@ public class DefaultConfig
 
     public FXMLWindow serverGUI()
     {
-        return new FXMLWindow(serverGUIController(),
-                              getClass().getResource("Views/ServerGUI.fxml"),
-                              primaryStage);
+        return new FXMLWindow(serverGUIController(), getClass()
+                .getResource("fxmldefinitions/ServerGUI.fxml"), primaryStage);
     }
 
     public FXMLController serverGUIController()
     {
-        return new ServerGUIController();
+        return new ServerGUIControls();
     }
 }

@@ -1,9 +1,9 @@
 package br.usp.icmc.ssc0103;
 
-import br.usp.icmc.ssc0103.AbstractResources.AbstractTableEntry;
-import br.usp.icmc.ssc0103.Models.CustomerEntry;
-import br.usp.icmc.ssc0103.Models.ProductEntry;
-import br.usp.icmc.ssc0103.Models.ReportEntry;
+import br.usp.icmc.ssc0103.models.AbstractTableEntry;
+import br.usp.icmc.ssc0103.models.CustomerEntry;
+import br.usp.icmc.ssc0103.models.ProductEntry;
+import br.usp.icmc.ssc0103.models.ReportEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -16,22 +16,6 @@ import java.util.List;
 
 public class DefaultDatabase
 {
-    private List<CustomerEntry> customers;
-    private List<ProductEntry>  products;
-    private List<ReportEntry>   reports;
-
-    private ObservableList<CustomerEntry> observableCustomers;
-    private ObservableList<ProductEntry>  observableProducts;
-    private ObservableList<ReportEntry>   observableReports;
-
-    private final File defaultDatabaseRoot = new File("database");
-    private final File customersFile       = new File(defaultDatabaseRoot +
-                                                      "/customers.csv");
-    private final File productsFile        = new File(defaultDatabaseRoot +
-                                                      "/products.csv");
-    private final File reportsFile         = new File(defaultDatabaseRoot +
-                                                      "/reports.csv");
-
     // Static block singleton initiator
     private static DefaultDatabase INSTANCE;
 
@@ -43,6 +27,20 @@ public class DefaultDatabase
             System.err.println(e.getMessage());
         }
     }
+
+    private final File defaultDatabaseRoot = new File("database");
+    private final File customersFile       = new File(defaultDatabaseRoot +
+                                                      "/customers.csv");
+    private final File productsFile        = new File(defaultDatabaseRoot +
+                                                      "/products.csv");
+    private final File reportsFile         = new File(defaultDatabaseRoot +
+                                                      "/reports.csv");
+    private List<CustomerEntry>           customers;
+    private List<ProductEntry>            products;
+    private List<ReportEntry>             reports;
+    private ObservableList<CustomerEntry> observableCustomers;
+    private ObservableList<ProductEntry>  observableProducts;
+    private ObservableList<ReportEntry>   observableReports;
 
     // Static block singleton constructor
     private DefaultDatabase() { }

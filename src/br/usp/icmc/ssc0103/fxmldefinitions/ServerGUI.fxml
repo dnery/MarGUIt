@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+          prefHeight="480" prefWidth="640" hgap="5" vgap="5" styleClass="root"
+          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ServerGUIControls">
+
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5"/>
+    </padding>
+
+    <Label id="sgui-label-main" text="Server Management Interface"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <HBox alignment="BASELINE_CENTER" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Button onAction="#registerProductAction" text="Register Product"/>
+        <Button onAction="#removeProductAction" text="Remove Product"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button onAction="#quitAppAction" text="Quit Program"/>
+    </HBox>
+
+    <TableView fx:id="productTableView"
+               GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn text="Name" prefWidth="100"/>
+            <TableColumn text="Cost" prefWidth="100"/>
+            <TableColumn text="Validity" prefWidth="100"/>
+            <TableColumn text="Provider" prefWidth="100"/>
+            <TableColumn text="Stock Amount" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="BASELINE_CENTER" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <Text fx:id="debugLineView"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button onAction="#dumpLogsAction" text="Dump Logs to PDF"/>
+        <Button onAction="#serverInfoAction" text="Listening Info"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@resources/locontrast.css"/>
+    </stylesheets>
+
+</GridPane>

@@ -1,6 +1,4 @@
-package br.usp.icmc.ssc0103.Models;
-
-import br.usp.icmc.ssc0103.AbstractResources.AbstractTableEntry;
+package br.usp.icmc.ssc0103.models;
 
 public class ProductEntry implements AbstractTableEntry
 {
