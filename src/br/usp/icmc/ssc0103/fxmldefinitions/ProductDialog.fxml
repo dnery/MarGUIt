@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+          prefHeight="240" prefWidth="320" hgap="5" vgap="5" styleClass="root"
+          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ProductDialogControls">
+
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5"/>
+    </padding>
+
+    <HBox alignment="BASELINE_LEFT" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Label text="Register New Product"/>
+    </HBox>
+
+    <Region GridPane.vgrow="ALWAYS" GridPane.columnIndex="0"
+            GridPane.rowIndex="1"/>
+
+    <TextField fx:id="nameField" alignment="BASELINE_CENTER"
+               promptText="product name" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="costField" alignment="BASELINE_CENTER"
+               promptText="product cost" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="providerField" alignment="BASELINE_CENTER"
+               promptText="provider name" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="expiryField" alignment="BASELINE_CENTER"
+               promptText="valid thru' (MM/dd/yyyy)" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <TextField fx:id="amountField" alignment="BASELINE_CENTER"
+               promptText="amount in stock" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+
+    <Region GridPane.vgrow="ALWAYS" GridPane.columnIndex="0"
+            GridPane.rowIndex="7"/>
+
+    <HBox alignment="BASELINE_CENTER" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="8">
+        <Text fx:id="alertOneLiner"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button onAction="#closeDialog" text="Done"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@resources/locontrast.css"/>
+    </stylesheets>
+
+</GridPane>

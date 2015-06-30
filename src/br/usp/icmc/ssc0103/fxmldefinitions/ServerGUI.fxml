@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
@@ -28,17 +30,44 @@
                GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS"
                GridPane.columnIndex="0" GridPane.rowIndex="2">
         <columns>
-            <TableColumn text="Name" prefWidth="100"/>
-            <TableColumn text="Cost" prefWidth="100"/>
-            <TableColumn text="Validity" prefWidth="100"/>
-            <TableColumn text="Provider" prefWidth="100"/>
-            <TableColumn text="Stock Amount" prefWidth="100"/>
+            <TableColumn text="Name" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Cost" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cost"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Provider" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="provider"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Expiration" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="expireDate"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Stock Amount" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="amountInStock"/>
+                </cellValueFactory>
+            </TableColumn>
         </columns>
+
+        <FXCollections fx:factory="observableArrayList">
+        </FXCollections>
     </TableView>
 
     <HBox alignment="BASELINE_CENTER" spacing="5"
           GridPane.columnIndex="0" GridPane.rowIndex="3">
-        <Text fx:id="debugLineView"/>
+        <Text fx:id="alertOneLiner"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button onAction="#dumpLogsAction" text="Dump Logs to PDF"/>
         <Button onAction="#serverInfoAction" text="Listening Info"/>

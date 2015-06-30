@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultDatabase
@@ -35,9 +34,6 @@ public class DefaultDatabase
                                                       "/products.csv");
     private final File reportsFile         = new File(defaultDatabaseRoot +
                                                       "/reports.csv");
-    private List<CustomerEntry>           customers;
-    private List<ProductEntry>            products;
-    private List<ReportEntry>             reports;
     private ObservableList<CustomerEntry> observableCustomers;
     private ObservableList<ProductEntry>  observableProducts;
     private ObservableList<ReportEntry>   observableReports;
@@ -51,10 +47,6 @@ public class DefaultDatabase
     // Static block singleton auxiliary initiator
     private void databaseInit() throws IOException
     {
-        // Start data structures
-        customers = new ArrayList<>();
-        products = new ArrayList<>();
-        reports = new ArrayList<>();
 
         // Load paths and files
         defaultDatabaseRoot.mkdir();
@@ -62,59 +54,56 @@ public class DefaultDatabase
         productsFile.createNewFile();
         reportsFile.createNewFile();
 
-        // Read from files
-        readAndPopulate();
-
         // Customers list: write on event
-        observableCustomers = FXCollections.observableList(customers);
+        observableCustomers = FXCollections.observableArrayList();
         observableCustomers.addListener(
                 (ListChangeListener<AbstractTableEntry>) c -> {
                     try {
-                        serializeAndWrite(customersFile, customers);
+                        serializeAndWrite(customersFile, observableCustomers);
                     } catch (IOException e) {
                         System.err.println(e.getMessage());
                     }
                 });
 
         // Products list: write on event
-        observableProducts = FXCollections.observableList(products);
+        observableProducts = FXCollections.observableArrayList();
         observableProducts.addListener(
                 (ListChangeListener<AbstractTableEntry>) c -> {
                     try {
-                        serializeAndWrite(productsFile, products);
+                        serializeAndWrite(productsFile, observableProducts);
                     } catch (IOException e) {
                         System.err.println(e.getMessage());
                     }
                 });
 
         // Reports list: write on event
-        observableReports = FXCollections.observableList(reports);
+        observableReports = FXCollections.observableArrayList();
         observableReports.addListener(
                 (ListChangeListener<AbstractTableEntry>) c -> {
                     try {
-                        serializeAndWrite(reportsFile, reports);
+                        serializeAndWrite(reportsFile, observableReports);
                     } catch (IOException e) {
                         System.err.println(e.getMessage());
                     }
                 });
+
+        // Read from files
+        readAndPopulate();
     }
 
-    public void newProduct(String... arguments) throws ParseException
+    public void newProduct(String... arguments) throws NumberFormatException,
+                                                       NullPointerException,
+                                                       ParseException
+
     {
-        if (products.stream().noneMatch(product -> product.getName().equals(
-                arguments[0]))) {
+        if (observableProducts.stream().noneMatch(product -> product
+                                                          .getName()
+                                                          .equals(arguments[0])
+                                                 )) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
             // Add to observable list
             observableProducts.add(
-                    new ProductEntry(arguments[0],
-                                     Double.parseDouble(arguments[1]),
-                                     arguments[2],
-                                     dateFormat.parse(arguments[3]).getTime(),
-                                     Integer.parseInt(arguments[4])));
-
-            // Add to regular list
-            products.add(
                     new ProductEntry(arguments[0],
                                      Double.parseDouble(arguments[1]),
                                      arguments[2],
@@ -132,19 +121,19 @@ public class DefaultDatabase
         // Read from customer entries file
         fileReader = new BufferedReader(new FileReader(customersFile));
         while ((bufferedLine = fileReader.readLine()) != null)
-            customers.add(new CustomerEntry(bufferedLine.split(",")));
+            observableCustomers.add(new CustomerEntry(bufferedLine.split(",")));
         fileReader.close();
 
         // Read from product entries file
         fileReader = new BufferedReader(new FileReader(productsFile));
         while ((bufferedLine = fileReader.readLine()) != null)
-            products.add(new ProductEntry(bufferedLine.split(",")));
+            observableProducts.add(new ProductEntry(bufferedLine.split(",")));
         fileReader.close();
 
         // Read from report entries file
         fileReader = new BufferedReader(new FileReader(reportsFile));
         while ((bufferedLine = fileReader.readLine()) != null)
-            reports.add(new ReportEntry(bufferedLine.split(",")));
+            observableReports.add(new ReportEntry(bufferedLine.split(",")));
         fileReader.close();
     }
 
@@ -158,5 +147,20 @@ public class DefaultDatabase
         for (AbstractTableEntry abstractTableEntry : bufferedList)
             fileWriter.write(abstractTableEntry.serialize() + "\n");
         fileWriter.close();
+    }
+
+    public ObservableList<CustomerEntry> getObservableCustomers()
+    {
+        return observableCustomers;
+    }
+
+    public ObservableList<ProductEntry> getObservableProducts()
+    {
+        return observableProducts;
+    }
+
+    public ObservableList<ReportEntry> getObservableReports()
+    {
+        return observableReports;
     }
 }

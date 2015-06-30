@@ -30,9 +30,10 @@ public class FXMLWindow extends Stage
         try {
             loader.setControllerFactory(param -> controller);
             setScene(new Scene(loader.load()));
+            setTitle("Forever Untitled");
             controller.setView(this);
         } catch (IOException e) {
-            System.err.println("On Loader!");
+            System.err.println("Error Loading FXML...");
         }
     }
 }

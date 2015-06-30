@@ -40,6 +40,17 @@ public class ProductEntry implements AbstractTableEntry
 
     public int getAmountInStock() { return amountInStock; }
 
+    public void setName(String name) { this.name = name; }
+
+    public void setCost(double cost) { this.cost = cost; }
+
+    public void setProvider(String provider) { this.provider = provider; }
+
+    public void setExpireDate(long expireDate)
+    {
+        this.expireDate = expireDate;
+    }
+
     public void setAmountInStock(int amountInStock)
     {
         this.amountInStock = amountInStock;
