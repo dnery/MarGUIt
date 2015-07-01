@@ -55,7 +55,4 @@ public class CustomerEntry implements AbstractTableEntry
                "," + userName +
                "," + password;
     }
-
-    @Override
-    public String[] tokenize() { return serialize().split(","); }
 }

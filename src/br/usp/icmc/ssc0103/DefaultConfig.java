@@ -1,7 +1,7 @@
 package br.usp.icmc.ssc0103;
 
-import br.usp.icmc.ssc0103.fxmlcontrollers.ProductDialogControls;
-import br.usp.icmc.ssc0103.fxmlcontrollers.ServerGUIControls;
+import br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB1Controller;
+import br.usp.icmc.ssc0103.fxmlcontrollers.ServerMWController;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
 import javafx.stage.Stage;
@@ -25,27 +25,27 @@ public class DefaultConfig
     {
         return new FXMLWindow(serverGUIControls(), getClass().getResource
                 (
-                        "fxmldefinitions/ServerGUI.fxml"
+                        "fxmldefinitions/server_mw.fxml"
                 ),
                               primaryStage);
     }
 
     public FXMLController serverGUIControls()
     {
-        return new ServerGUIControls();
+        return new ServerMWController();
     }
 
     public FXMLWindow productDialog()
     {
         return new FXMLWindow(productDialogControls(), getClass().getResource
                 (
-                        "fxmldefinitions/ProductDialog.fxml"
+                        "fxmldefinitions/server_db1.fxml"
                 ),
                               primaryStage);
     }
 
     public FXMLController productDialogControls()
     {
-        return new ProductDialogControls();
+        return new ServerDB1Controller();
     }
 }

@@ -1,10 +1,8 @@
 package br.usp.icmc.ssc0103.models;
 
-// Encapsulate everything no matter what
+@FunctionalInterface
 public interface AbstractTableEntry
 {
     String serialize();
-
-    String[] tokenize();
 }
 

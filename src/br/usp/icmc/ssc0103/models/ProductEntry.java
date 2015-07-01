@@ -65,7 +65,4 @@ public class ProductEntry implements AbstractTableEntry
                "," + expireDate +
                "," + amountInStock;
     }
-
-    @Override
-    public String[] tokenize() { return serialize().split(","); }
 }

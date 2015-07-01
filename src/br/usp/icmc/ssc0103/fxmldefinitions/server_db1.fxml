@@ -5,9 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+<GridPane xmlns="http://javafx.com/fxml" xmlns:fx="http://java.sun.com/JSP/Page"
+          alignment="CENTER"
           prefHeight="240" prefWidth="320" hgap="5" vgap="5" styleClass="root"
-          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ProductDialogControls">
+          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB1Controller">
 
     <padding>
         <Insets bottom="5" left="5" right="5" top="5"/>
@@ -44,11 +45,11 @@
           GridPane.columnIndex="0" GridPane.rowIndex="8">
         <Text fx:id="alertOneLiner"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button onAction="#closeDialog" text="Done"/>
+        <Button onAction="#addProduct" text="Done"/>
     </HBox>
 
     <stylesheets>
-        <URL value="@resources/locontrast.css"/>
+        <URL value="@resources/whitebastards.css"/>
     </stylesheets>
 
 </GridPane>

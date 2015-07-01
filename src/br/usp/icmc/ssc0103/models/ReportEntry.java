@@ -42,7 +42,4 @@ public class ReportEntry implements AbstractTableEntry
                "," + amountSold +
                "," + saleDate;
     }
-
-    @Override
-    public String[] tokenize() { return serialize().split(","); }
 }
