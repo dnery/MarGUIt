@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<GridPane xmlns:fx="http://java.sun.com/JSP/Page" xmlns="http://javafx.com/fxml"
+          alignment="CENTER"
+          prefHeight="240" prefWidth="320" hgap="5" vgap="5" styleClass="root"
+          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB2Controller">
+
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5"/>
+    </padding>
+
+    <Label id="label-sub" text="Server Info"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <Region GridPane.vgrow="ALWAYS"
+            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <VBox alignment="BASELINE_RIGHT" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="2"
+          GridPane.hgrow="ALWAYS">
+        <Label text="Host Name:"/>
+        <Label text="INet IP Address:"/>
+        <Label text="Listening on Port:"/>
+    </VBox>
+
+    <VBox alignment="BASELINE_LEFT" spacing="5"
+          GridPane.columnIndex="1" GridPane.rowIndex="2"
+          GridPane.hgrow="ALWAYS">
+
+        <Text fx:id="hostName"/>
+        <Text fx:id="hostAddress"/>
+        <Text fx:id="listeningPort"/>
+    </VBox>
+
+    <Region GridPane.vgrow="ALWAYS"
+            GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+    <HBox alignment="BOTTOM_RIGHT" spacing="5"
+          GridPane.columnIndex="1" GridPane.rowIndex="4"
+          GridPane.hgrow="ALWAYS">
+        <Button onAction="#closeDialog" text="Done"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@resources/whitebastards.css"/>
+    </stylesheets>
+
+</GridPane>
+

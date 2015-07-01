@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<GridPane xmlns="http://javafx.com/fxml" xmlns:fx="http://java.sun.com/JSP/Page"
+<GridPane xmlns:fx="http://java.sun.com/JSP/Page" xmlns="http://javafx.com/fxml"
           alignment="CENTER"
           prefHeight="240" prefWidth="320" hgap="5" vgap="5" styleClass="root"
           fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB1Controller">
@@ -32,7 +32,7 @@
                promptText="provider name" GridPane.hgrow="ALWAYS"
                GridPane.columnIndex="0" GridPane.rowIndex="4"/>
     <TextField fx:id="expiryField" alignment="BASELINE_CENTER"
-               promptText="valid thru' (MM/dd/yyyy)" GridPane.hgrow="ALWAYS"
+               promptText="valid thru' (MM/yyyy)" GridPane.hgrow="ALWAYS"
                GridPane.columnIndex="0" GridPane.rowIndex="5"/>
     <TextField fx:id="amountField" alignment="BASELINE_CENTER"
                promptText="amount in stock" GridPane.hgrow="ALWAYS"
@@ -43,9 +43,9 @@
 
     <HBox alignment="BASELINE_CENTER" spacing="5"
           GridPane.columnIndex="0" GridPane.rowIndex="8">
-        <Text fx:id="alertOneLiner"/>
+        <Text fx:id="oneLiner"/>
         <Region HBox.hgrow="ALWAYS"/>
-        <Button onAction="#addProduct" text="Done"/>
+        <Button onAction="#registerProduct" text="Done"/>
     </HBox>
 
     <stylesheets>

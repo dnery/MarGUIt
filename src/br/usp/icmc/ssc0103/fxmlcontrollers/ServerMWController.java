@@ -6,6 +6,7 @@ import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
 import br.usp.icmc.ssc0103.models.ProductEntry;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
@@ -15,14 +16,12 @@ public class ServerMWController implements FXMLController
 {
     @FXML
     private TableView<ProductEntry> productTableView;
-
     @FXML
-    private Text alertOneLiner;
+    private TableColumn             nameColumn;
+    @FXML
+    private Text                    oneLiner;
 
     private FXMLWindow view;
-
-    @Override
-    public void setView(FXMLWindow view) { this.view = view; }
 
     @FXML
     void initialize()
@@ -30,18 +29,21 @@ public class ServerMWController implements FXMLController
         productTableView.setItems(getInstance().getObservableProducts());
     }
 
+    @Override
+    public void setView(FXMLWindow view) { this.view = view; }
+
     @FXML
     public void registerProductAction(ActionEvent actionEvent)
     {
-        alertOneLiner.setText("Registering New Product...");
+        oneLiner.setText("Registering New Product...");
 
-        DefaultConfig.getConfig().productDialog().show();
+        DefaultConfig.getConfig().serverDB1().show();
     }
 
     @FXML
     public void removeProductAction(ActionEvent actionEvent)
     {
-        alertOneLiner.setText("Removing Existing Product...");
+        oneLiner.setText("Removing Existing Product...");
     }
 
     @FXML
@@ -54,13 +56,15 @@ public class ServerMWController implements FXMLController
     @FXML
     public void dumpLogsAction(ActionEvent actionEvent)
     {
-        alertOneLiner.setText("Dumping Logs to Disk...");
+        oneLiner.setText("Dumping Logs to Disk...");
     }
 
     @FXML
     public void serverInfoAction(ActionEvent actionEvent)
     {
-        alertOneLiner.setText("Display Listener info...");
+        oneLiner.setText("Display Listener info...");
+
+        DefaultConfig.getConfig().serverDB2().show();
     }
 
     @FXML

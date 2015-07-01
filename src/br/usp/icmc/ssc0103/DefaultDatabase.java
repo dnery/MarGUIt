@@ -27,13 +27,13 @@ public class DefaultDatabase
         }
     }
 
-    private final File defaultDatabaseRoot = new File("database");
-    private final File customersFile       = new File(defaultDatabaseRoot +
-                                                      "/customers.csv");
-    private final File productsFile        = new File(defaultDatabaseRoot +
-                                                      "/products.csv");
-    private final File reportsFile         = new File(defaultDatabaseRoot +
-                                                      "/reports.csv");
+    private final File databaseRoot  = new File("database");
+    private final File customersFile = new File(databaseRoot +
+                                                "/customers.csv");
+    private final File productsFile  = new File(databaseRoot +
+                                                "/products.csv");
+    private final File reportsFile   = new File(databaseRoot +
+                                                "/reports.csv");
     private ObservableList<CustomerEntry> observableCustomers;
     private ObservableList<ProductEntry>  observableProducts;
     private ObservableList<ReportEntry>   observableReports;
@@ -49,7 +49,7 @@ public class DefaultDatabase
     {
 
         // Load paths and files
-        defaultDatabaseRoot.mkdir();
+        databaseRoot.mkdir();
         customersFile.createNewFile();
         productsFile.createNewFile();
         reportsFile.createNewFile();
@@ -58,9 +58,16 @@ public class DefaultDatabase
         observableCustomers = FXCollections.observableArrayList();
         observableCustomers.addListener(
                 (ListChangeListener<AbstractTableEntry>) c -> {
+                    observableCustomers.sort(
+                            (customerEntry, t1) ->
+                                    customerEntry
+                                            .getName()
+                                            .compareTo(t1.getName())
+                                            );
+
                     try {
                         serializeAndWrite(customersFile, observableCustomers);
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
                 });
@@ -71,7 +78,7 @@ public class DefaultDatabase
                 (ListChangeListener<AbstractTableEntry>) c -> {
                     try {
                         serializeAndWrite(productsFile, observableProducts);
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
                 });
@@ -82,7 +89,7 @@ public class DefaultDatabase
                 (ListChangeListener<AbstractTableEntry>) c -> {
                     try {
                         serializeAndWrite(reportsFile, observableReports);
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
                 });
@@ -91,24 +98,26 @@ public class DefaultDatabase
         readAndPopulate();
     }
 
-    public void newProduct(String... arguments) throws NumberFormatException,
-                                                       NullPointerException,
-                                                       ParseException
+    public void newProduct(String... arguments) throws ParseException
 
     {
         if (observableProducts.stream().noneMatch(product -> product
                                                           .getName()
                                                           .equals(arguments[0])
                                                  )) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            // Parse date and time
+            SimpleDateFormat format = new SimpleDateFormat("MM/yyyy");
+            arguments[3] = "" + format.parse(arguments[3]).getTime();
 
             // Add to observable list
             observableProducts.add(
-                    new ProductEntry(arguments[0],
-                                     Double.parseDouble(arguments[1]),
-                                     arguments[2],
-                                     dateFormat.parse(arguments[3]).getTime(),
-                                     Integer.parseInt(arguments[4])));
+                    new ProductEntry.Builder()
+                            .name(arguments[0])
+                            .cost(arguments[1])
+                            .provider(arguments[2])
+                            .expireDate(arguments[3])
+                            .amountInStock(arguments[4]).build()
+                                  );
         }
     }
 
@@ -117,29 +126,41 @@ public class DefaultDatabase
         // Reader shenanigans
         BufferedReader fileReader;
         String bufferedLine;
+        String[] arguments;
 
         // Read from customer entries file
         fileReader = new BufferedReader(new FileReader(customersFile));
-        while ((bufferedLine = fileReader.readLine()) != null)
-            observableCustomers.add(new CustomerEntry(bufferedLine.split(",")));
+        while ((bufferedLine = fileReader.readLine()) != null) {
+            arguments = bufferedLine.split(",");
+        }
         fileReader.close();
 
         // Read from product entries file
         fileReader = new BufferedReader(new FileReader(productsFile));
-        while ((bufferedLine = fileReader.readLine()) != null)
-            observableProducts.add(new ProductEntry(bufferedLine.split(",")));
+        while ((bufferedLine = fileReader.readLine()) != null) {
+            arguments = bufferedLine.split(",");
+            observableProducts.add(
+                    new ProductEntry.Builder()
+                            .name(arguments[0])
+                            .cost(arguments[1])
+                            .provider(arguments[2])
+                            .expireDate(arguments[3])
+                            .amountInStock(arguments[4]).build()
+                                  );
+        }
         fileReader.close();
 
         // Read from report entries file
         fileReader = new BufferedReader(new FileReader(reportsFile));
-        while ((bufferedLine = fileReader.readLine()) != null)
-            observableReports.add(new ReportEntry(bufferedLine.split(",")));
+        while ((bufferedLine = fileReader.readLine()) != null) {
+            arguments = bufferedLine.split(",");
+        }
         fileReader.close();
     }
 
-    public void serializeAndWrite(File filePointer,
-                                  List<? extends AbstractTableEntry>
-                                          bufferedList) throws IOException
+    public void serializeAndWrite(
+            File filePointer, List<? extends AbstractTableEntry> bufferedList
+                                 ) throws IOException
     {
         // Write to generic entries file
         BufferedWriter fileWriter = new BufferedWriter(new FileWriter(

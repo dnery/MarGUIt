@@ -21,9 +21,8 @@ public class ServerDB1Controller implements FXMLController
     private TextField expiryField;
     @FXML
     private TextField amountField;
-
     @FXML
-    private Text alertOneLiner;
+    private Text      oneLiner;
 
     private FXMLWindow view;
 
@@ -31,7 +30,7 @@ public class ServerDB1Controller implements FXMLController
     public void setView(FXMLWindow view) { this.view = view; }
 
     @FXML
-    public void addProduct(ActionEvent actionEvent)
+    public void registerProduct(ActionEvent actionEvent)
     {
         try {
             getInstance().newProduct(nameField.getText(),
@@ -42,7 +41,7 @@ public class ServerDB1Controller implements FXMLController
             actionEvent.consume();
             close();
         } catch (Exception e) {
-            alertOneLiner.setText("Parsing error; Check your input...");
+            oneLiner.setText("Parsing error; Check your input...");
         }
     }
 

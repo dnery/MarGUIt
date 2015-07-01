@@ -13,6 +13,7 @@ public class ServerApp extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        DefaultContext.getContext();
         DefaultDatabase.getInstance();
         DefaultConfig.getConfig().setPrimaryStage(primaryStage);
         DefaultConfig.getConfig().serverGUI().show();

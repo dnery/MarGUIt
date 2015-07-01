@@ -21,9 +21,16 @@
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 
-#sgui-label-main {
+#label-main {
     -fx-font-size: 28px;
     -fx-font-family: "Arial Black";
     -fx-text-fill: #818181;
     -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.7), 6, 0.0, 0, 2);
+}
+
+#label-sub {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1);
 }

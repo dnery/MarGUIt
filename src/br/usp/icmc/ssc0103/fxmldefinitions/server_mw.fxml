@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
@@ -15,7 +14,7 @@
         <Insets bottom="5" left="5" right="5" top="5"/>
     </padding>
 
-    <Label id="sgui-label-main" text="Server Management Interface"
+    <Label id="label-main" text="Server Management Interface"
            GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
     <HBox alignment="BASELINE_CENTER" spacing="5"
@@ -60,14 +59,11 @@
                 </cellValueFactory>
             </TableColumn>
         </columns>
-
-        <FXCollections fx:factory="observableArrayList"/>
-
     </TableView>
 
     <HBox alignment="BASELINE_CENTER" spacing="5"
           GridPane.columnIndex="0" GridPane.rowIndex="3">
-        <Text fx:id="alertOneLiner"/>
+        <Text fx:id="oneLiner"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button onAction="#dumpLogsAction" text="Dump Logs to PDF"/>
         <Button onAction="#serverInfoAction" text="Listening Info"/>
