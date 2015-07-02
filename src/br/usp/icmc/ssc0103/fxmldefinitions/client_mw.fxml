@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+          prefHeight="480" prefWidth="640" hgap="5" vgap="5" styleClass="root"
+          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ClientMWController">
+
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5"/>
+    </padding>
+
+    <Label id="label-main" text="Client Control Interface"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <HBox alignment="BASELINE_CENTER" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Button onAction="#registerUserAction" text="Register User"/>
+        <Button fx:id="makePurchaseButton" onAction="#makePurchaseAction"
+                text="make Purchase"/>
+        <Button onAction="#updateViewAction" text="Update View"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button onAction="#quitAppAction" text="Quit Program"/>
+    </HBox>
+
+    <TableView fx:id="productTableView"
+               GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <columns>
+            <TableColumn text="Name" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Cost" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cost"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Provider" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="provider"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Expiration" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="expireDate"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Stock Amount" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="amountInStock"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <HBox alignment="BASELINE_CENTER" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <Button fx:id="logInButton" onAction="#logInAction" text="Log In"/>
+        <Text fx:id="oneLiner"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@resources/whitebastards.css"/>
+    </stylesheets>
+
+</GridPane>
