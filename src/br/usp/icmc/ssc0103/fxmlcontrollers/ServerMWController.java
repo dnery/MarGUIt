@@ -3,10 +3,10 @@ package br.usp.icmc.ssc0103.fxmlcontrollers;
 import br.usp.icmc.ssc0103.DefaultConfig;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
+import br.usp.icmc.ssc0103.models.CustomerEntry;
 import br.usp.icmc.ssc0103.models.ProductEntry;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
@@ -15,17 +15,18 @@ import static br.usp.icmc.ssc0103.DefaultDatabase.getInstance;
 public class ServerMWController implements FXMLController
 {
     @FXML
-    private TableView<ProductEntry> productTableView;
+    private TableView<CustomerEntry> customerTableView;
     @FXML
-    private TableColumn             nameColumn;
+    private TableView<ProductEntry>  productTableView;
     @FXML
-    private Text                    oneLiner;
+    private Text                     oneLiner;
 
     private FXMLWindow view;
 
     @FXML
     void initialize()
     {
+        customerTableView.setItems(getInstance().getObservableCustomers());
         productTableView.setItems(getInstance().getObservableProducts());
     }
 

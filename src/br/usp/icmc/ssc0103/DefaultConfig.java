@@ -1,8 +1,6 @@
 package br.usp.icmc.ssc0103;
 
-import br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB1Controller;
-import br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB2Controller;
-import br.usp.icmc.ssc0103.fxmlcontrollers.ServerMWController;
+import br.usp.icmc.ssc0103.fxmlcontrollers.*;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
 import javafx.stage.Stage;
@@ -40,6 +38,18 @@ public class DefaultConfig
                 .getResource("fxmldefinitions/server_db2.fxml"), primaryStage);
     }
 
+    public FXMLWindow clientGUI()
+    {
+        return new FXMLWindow(clientGUIController(), getClass()
+                .getResource("fxmldefinitions/client_mw.fxml"), primaryStage);
+    }
+
+    public FXMLWindow setRemote()
+    {
+        return new FXMLWindow(setRemoteController(), getClass()
+                .getResource("fxmldefinitions/set_remote.fxml"), primaryStage);
+    }
+
     public FXMLController serverGUIController()
     {
         return new ServerMWController();
@@ -53,5 +63,15 @@ public class DefaultConfig
     public FXMLController serverDB2Controller()
     {
         return new ServerDB2Controller();
+    }
+
+    public FXMLController clientGUIController()
+    {
+        return new ClientMWController();
+    }
+
+    public FXMLController setRemoteController()
+    {
+        return new SetRemoteController();
     }
 }

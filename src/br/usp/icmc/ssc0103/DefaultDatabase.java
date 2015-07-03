@@ -27,6 +27,7 @@ public class DefaultDatabase
         }
     }
 
+    // Attributes
     private final File databaseRoot  = new File("database");
     private final File customersFile = new File(databaseRoot +
                                                 "/customers.csv");
@@ -58,13 +59,6 @@ public class DefaultDatabase
         observableCustomers = FXCollections.observableArrayList();
         observableCustomers.addListener(
                 (ListChangeListener<AbstractTableEntry>) c -> {
-                    observableCustomers.sort(
-                            (customerEntry, t1) ->
-                                    customerEntry
-                                            .getName()
-                                            .compareTo(t1.getName())
-                                            );
-
                     try {
                         serializeAndWrite(customersFile, observableCustomers);
                     } catch (Exception e) {
@@ -132,6 +126,15 @@ public class DefaultDatabase
         fileReader = new BufferedReader(new FileReader(customersFile));
         while ((bufferedLine = fileReader.readLine()) != null) {
             arguments = bufferedLine.split(",");
+            observableCustomers.add(
+                    new CustomerEntry.Builder()
+                            .name(arguments[0])
+                            .address(arguments[1])
+                            .phoneNumber(arguments[2])
+                            .userEmail(arguments[3])
+                            .userName(arguments[4])
+                            .password(arguments[5]).build()
+                                   );
         }
         fileReader.close();
 

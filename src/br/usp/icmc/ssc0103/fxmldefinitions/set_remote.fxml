@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<GridPane xmlns:fx="http://java.sun.com/JSP/Page" xmlns="http://javafx.com/fxml"
+          alignment="CENTER"
+          prefHeight="240" prefWidth="320" hgap="5" vgap="5" styleClass="root"
+          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.SetRemoteController">
+
+    <padding>
+        <Insets bottom="5" left="5" right="5" top="5"/>
+    </padding>
+
+    <HBox alignment="BASELINE_LEFT" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <Label text="Establish Connection"/>
+    </HBox>
+
+    <Region GridPane.vgrow="ALWAYS" GridPane.columnIndex="0"
+            GridPane.rowIndex="1"/>
+
+    <TextField fx:id="remoteAddress" alignment="BASELINE_CENTER"
+               promptText="remote server address" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="remotePort" alignment="BASELINE_CENTER"
+               promptText="remote server port" GridPane.hgrow="ALWAYS"
+               GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+    <Region GridPane.vgrow="ALWAYS" GridPane.columnIndex="0"
+            GridPane.rowIndex="7"/>
+
+    <HBox alignment="BASELINE_CENTER" spacing="5"
+          GridPane.columnIndex="0" GridPane.rowIndex="8">
+        <Text fx:id="oneLiner"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button onAction="#plugRemote" text="Plug"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@resources/whitebastards.css"/>
+    </stylesheets>
+
+</GridPane>

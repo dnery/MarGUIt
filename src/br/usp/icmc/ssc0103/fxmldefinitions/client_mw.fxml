@@ -21,8 +21,9 @@
           GridPane.columnIndex="0" GridPane.rowIndex="1">
         <Button onAction="#registerUserAction" text="Register User"/>
         <Button fx:id="makePurchaseButton" onAction="#makePurchaseAction"
-                text="make Purchase"/>
-        <Button onAction="#updateViewAction" text="Update View"/>
+                text="Make Purchase"/>
+        <Button fx:id="updateViewButton" onAction="#updateViewAction"
+                text="Update View"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button onAction="#quitAppAction" text="Quit Program"/>
     </HBox>
@@ -65,9 +66,9 @@
 
     <HBox alignment="BASELINE_CENTER" spacing="5"
           GridPane.columnIndex="0" GridPane.rowIndex="3">
-        <Button fx:id="logInButton" onAction="#logInAction" text="Log In"/>
         <Text fx:id="oneLiner"/>
         <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="logInButton" onAction="#logInAction" text="Log In"/>
     </HBox>
 
     <stylesheets>

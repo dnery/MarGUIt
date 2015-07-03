@@ -28,6 +28,11 @@ public class CustomerEntry implements AbstractTableEntry, Serializable
         return name.get();
     }
 
+    public void setName(String name)
+    {
+        this.name.set(name);
+    }
+
     public SimpleStringProperty nameProperty()
     {
         return name;
@@ -36,6 +41,11 @@ public class CustomerEntry implements AbstractTableEntry, Serializable
     public String getAddress()
     {
         return address.get();
+    }
+
+    public void setAddress(String address)
+    {
+        this.address.set(address);
     }
 
     public SimpleStringProperty addressProperty()
@@ -48,6 +58,11 @@ public class CustomerEntry implements AbstractTableEntry, Serializable
         return phoneNumber.get();
     }
 
+    public void setPhoneNumber(String phoneNumber)
+    {
+        this.phoneNumber.set(phoneNumber);
+    }
+
     public SimpleStringProperty phoneNumberProperty()
     {
         return phoneNumber;
@@ -56,6 +71,11 @@ public class CustomerEntry implements AbstractTableEntry, Serializable
     public String getUserEmail()
     {
         return userEmail.get();
+    }
+
+    public void setUserEmail(String userEmail)
+    {
+        this.userEmail.set(userEmail);
     }
 
     public SimpleStringProperty userEmailProperty()
@@ -68,6 +88,11 @@ public class CustomerEntry implements AbstractTableEntry, Serializable
         return userName.get();
     }
 
+    public void setUserName(String userName)
+    {
+        this.userName.set(userName);
+    }
+
     public SimpleStringProperty userNameProperty()
     {
         return userName;
@@ -78,52 +103,28 @@ public class CustomerEntry implements AbstractTableEntry, Serializable
         return password.get();
     }
 
-    public SimpleStringProperty passwordProperty()
-    {
-        return password;
-    }
-
-    public void setName(String name)
-    {
-        this.name.set(name);
-    }
-
-    public void setAddress(String address)
-    {
-        this.address.set(address);
-    }
-
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber.set(phoneNumber);
-    }
-
-    public void setUserEmail(String userEmail)
-    {
-        this.userEmail.set(userEmail);
-    }
-
-    public void setUserName(String userName)
-    {
-        this.userName.set(userName);
-    }
-
     public void setPassword(String password)
     {
         this.password.set(password);
     }
 
+    public SimpleStringProperty passwordProperty()
+    {
+        return password;
+    }
+
     @Override
     public String serialize()
     {
-        return name +
-               "," + address +
-               "," + phoneNumber +
-               "," + userEmail +
-               "," + userName +
-               "," + password;
+        return name.get() +
+               "," + address.get() +
+               "," + phoneNumber.get() +
+               "," + userEmail.get() +
+               "," + userName.get() +
+               "," + password.get();
     }
 
+    // Not too readable builder
     public static class Builder
     {
         private final SimpleStringProperty nestedName;

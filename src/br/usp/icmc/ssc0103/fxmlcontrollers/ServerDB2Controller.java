@@ -1,5 +1,6 @@
 package br.usp.icmc.ssc0103.fxmlcontrollers;
 
+import br.usp.icmc.ssc0103.ServerContext;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
 import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
 import javafx.event.ActionEvent;
@@ -8,8 +9,6 @@ import javafx.scene.text.Text;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-
-import static br.usp.icmc.ssc0103.DefaultContext.getContext;
 
 public class ServerDB2Controller implements FXMLController
 {
@@ -30,8 +29,10 @@ public class ServerDB2Controller implements FXMLController
 
             hostAddress.setText(InetAddress.getLocalHost().getHostAddress());
 
-            listeningPort.setText(getContext().getServerSocket()
-                                              .getLocalPort() + "");
+            listeningPort.setText(ServerContext.getContext()
+                                               .getListener()
+                                               .getServerSocket()
+                                               .getLocalPort() + "");
         } catch (UnknownHostException e) {
             System.err.println(e.getMessage());
         }

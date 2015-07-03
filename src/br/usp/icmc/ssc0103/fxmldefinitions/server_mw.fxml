@@ -25,41 +25,80 @@
         <Button onAction="#quitAppAction" text="Quit Program"/>
     </HBox>
 
-    <TableView fx:id="productTableView"
-               GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS"
-               GridPane.columnIndex="0" GridPane.rowIndex="2">
-        <columns>
-            <TableColumn text="Name" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="name"/>
-                </cellValueFactory>
-            </TableColumn>
+    <TabPane GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS"
+             GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <Tab text="Customers" closable="false">
+            <TableView fx:id="customerTableView">
+                <columns>
+                    <TableColumn text="Name" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
 
-            <TableColumn text="Cost" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="cost"/>
-                </cellValueFactory>
-            </TableColumn>
+                    <TableColumn text="Address" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="address"/>
+                        </cellValueFactory>
+                    </TableColumn>
 
-            <TableColumn text="Provider" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="provider"/>
-                </cellValueFactory>
-            </TableColumn>
+                    <TableColumn text="Phone Number" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="phoneNumber"/>
+                        </cellValueFactory>
+                    </TableColumn>
 
-            <TableColumn text="Expiration" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="expireDate"/>
-                </cellValueFactory>
-            </TableColumn>
+                    <TableColumn text="E-mail" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="userEmail"/>
+                        </cellValueFactory>
+                    </TableColumn>
 
-            <TableColumn text="Stock Amount" prefWidth="100">
-                <cellValueFactory>
-                    <PropertyValueFactory property="amountInStock"/>
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-    </TableView>
+                    <TableColumn text="Username" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="userName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </Tab>
+
+        <Tab text="Products" closable="false">
+            <TableView fx:id="productTableView">
+                <columns>
+                    <TableColumn text="Name" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn text="Cost" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="cost"/>
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn text="Provider" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="provider"/>
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn text="Expiration" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="expireDate"/>
+                        </cellValueFactory>
+                    </TableColumn>
+
+                    <TableColumn text="Stock Amount" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="amountInStock"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </Tab>
+    </TabPane>
 
     <HBox alignment="BASELINE_CENTER" spacing="5"
           GridPane.columnIndex="0" GridPane.rowIndex="3">
