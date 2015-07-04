@@ -1,4 +1,4 @@
-package br.usp.icmc.ssc0103.models;
+package br.usp.icmc.ssc0103.model;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
+// Product table entry model (Builder pattern can be seen here)
 public class ProductEntry implements AbstractTableEntry, Serializable
 {
     private final SimpleStringProperty  name;
@@ -29,6 +30,11 @@ public class ProductEntry implements AbstractTableEntry, Serializable
         return name.get();
     }
 
+    public void setName(String name)
+    {
+        this.name.set(name);
+    }
+
     public SimpleStringProperty nameProperty()
     {
         return name;
@@ -37,6 +43,11 @@ public class ProductEntry implements AbstractTableEntry, Serializable
     public double getCost()
     {
         return cost.get();
+    }
+
+    public void setCost(double cost)
+    {
+        this.cost.set(cost);
     }
 
     public SimpleDoubleProperty costProperty()
@@ -49,6 +60,11 @@ public class ProductEntry implements AbstractTableEntry, Serializable
         return provider.get();
     }
 
+    public void setProvider(String provider)
+    {
+        this.provider.set(provider);
+    }
+
     public SimpleStringProperty providerProperty()
     {
         return provider;
@@ -57,6 +73,11 @@ public class ProductEntry implements AbstractTableEntry, Serializable
     public long getExpireDate()
     {
         return expireDate.get();
+    }
+
+    public void setExpireDate(long expireDate)
+    {
+        this.expireDate.set(expireDate);
     }
 
     public SimpleLongProperty expireDateProperty()
@@ -69,34 +90,14 @@ public class ProductEntry implements AbstractTableEntry, Serializable
         return amountInStock.get();
     }
 
-    public SimpleIntegerProperty amountInStockProperty()
-    {
-        return amountInStock;
-    }
-
-    public void setName(String name)
-    {
-        this.name.set(name);
-    }
-
-    public void setCost(double cost)
-    {
-        this.cost.set(cost);
-    }
-
-    public void setProvider(String provider)
-    {
-        this.provider.set(provider);
-    }
-
-    public void setExpireDate(long expireDate)
-    {
-        this.expireDate.set(expireDate);
-    }
-
     public void setAmountInStock(int amountInStock)
     {
         this.amountInStock.set(amountInStock);
+    }
+
+    public SimpleIntegerProperty amountInStockProperty()
+    {
+        return amountInStock;
     }
 
     @Override

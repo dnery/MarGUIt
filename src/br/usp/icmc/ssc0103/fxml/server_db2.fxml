@@ -8,7 +8,7 @@
 <GridPane xmlns:fx="http://java.sun.com/JSP/Page" xmlns="http://javafx.com/fxml"
           alignment="CENTER"
           prefHeight="240" prefWidth="320" hgap="5" vgap="5" styleClass="root"
-          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ServerDB2Controller">
+          fx:controller="br.usp.icmc.ssc0103.control.ServerDB2Controller">
 
     <padding>
         <Insets bottom="5" left="5" right="5" top="5"/>

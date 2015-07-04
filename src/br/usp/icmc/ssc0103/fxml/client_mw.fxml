@@ -8,7 +8,7 @@
 <?import java.net.URL?>
 <GridPane xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
           prefHeight="480" prefWidth="640" hgap="5" vgap="5" styleClass="root"
-          fx:controller="br.usp.icmc.ssc0103.fxmlcontrollers.ClientMWController">
+          fx:controller="br.usp.icmc.ssc0103.control.ClientMWController">
 
     <padding>
         <Insets bottom="5" left="5" right="5" top="5"/>

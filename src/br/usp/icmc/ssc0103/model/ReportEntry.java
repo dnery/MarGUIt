@@ -1,5 +1,6 @@
-package br.usp.icmc.ssc0103.models;
+package br.usp.icmc.ssc0103.model;
 
+// Report table entry model TODO
 public class ReportEntry implements AbstractTableEntry
 {
     private String customerName;

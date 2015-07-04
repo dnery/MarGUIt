@@ -1,13 +1,17 @@
-package br.usp.icmc.ssc0103.fxmlcontrollers;
+package br.usp.icmc.ssc0103.control;
 
-import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
-import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
+import br.usp.icmc.ssc0103.wrap.FXMLController;
+import br.usp.icmc.ssc0103.wrap.FXMLWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import static br.usp.icmc.ssc0103.DefaultDatabase.getInstance;
+
+// Server view "Register Product" dialog controller
+
+// Method names are sufficiently self-descriptive
 
 public class ServerDB1Controller implements FXMLController
 {
@@ -26,9 +30,6 @@ public class ServerDB1Controller implements FXMLController
 
     private FXMLWindow view;
 
-    @Override
-    public void setView(FXMLWindow view) { this.view = view; }
-
     @FXML
     public void registerProduct(ActionEvent actionEvent)
     {
@@ -45,6 +46,15 @@ public class ServerDB1Controller implements FXMLController
         }
     }
 
+    @Override
+    public void setView(FXMLWindow view)
+    {
+        this.view = view;
+    }
+
     @FXML
-    public void close() { view.close(); }
+    public void close()
+    {
+        view.close();
+    }
 }

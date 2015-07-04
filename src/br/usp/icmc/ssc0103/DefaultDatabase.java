@@ -1,9 +1,9 @@
 package br.usp.icmc.ssc0103;
 
-import br.usp.icmc.ssc0103.models.AbstractTableEntry;
-import br.usp.icmc.ssc0103.models.CustomerEntry;
-import br.usp.icmc.ssc0103.models.ProductEntry;
-import br.usp.icmc.ssc0103.models.ReportEntry;
+import br.usp.icmc.ssc0103.model.AbstractTableEntry;
+import br.usp.icmc.ssc0103.model.CustomerEntry;
+import br.usp.icmc.ssc0103.model.ProductEntry;
+import br.usp.icmc.ssc0103.model.ReportEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -92,8 +92,26 @@ public class DefaultDatabase
         readAndPopulate();
     }
 
-    public void newProduct(String... arguments) throws ParseException
+    public void newCustomer(String... arguments) throws ParseException
+    {
+        if (observableCustomers.stream().noneMatch(customer -> customer
+                                                           .getUserName()
+                                                           .equals(arguments[4])
+                                                  )) {
+            // Add to observable list
+            observableCustomers.add(
+                    new CustomerEntry.Builder()
+                            .name(arguments[0])
+                            .address(arguments[1])
+                            .phoneNumber(arguments[2])
+                            .userEmail(arguments[3])
+                            .userName(arguments[4])
+                            .password(arguments[5]).build()
+                                   );
+        }
+    }
 
+    public void newProduct(String... arguments) throws ParseException
     {
         if (observableProducts.stream().noneMatch(product -> product
                                                           .getName()

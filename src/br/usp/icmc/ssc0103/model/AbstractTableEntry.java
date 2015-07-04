@@ -1,4 +1,4 @@
-package br.usp.icmc.ssc0103.models;
+package br.usp.icmc.ssc0103.model;
 
 @FunctionalInterface
 public interface AbstractTableEntry

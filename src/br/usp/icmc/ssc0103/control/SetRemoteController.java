@@ -1,13 +1,17 @@
-package br.usp.icmc.ssc0103.fxmlcontrollers;
+package br.usp.icmc.ssc0103.control;
 
-import br.usp.icmc.ssc0103.ClientContext;
 import br.usp.icmc.ssc0103.DefaultConfig;
-import br.usp.icmc.ssc0103.fxmlwrappers.FXMLController;
-import br.usp.icmc.ssc0103.fxmlwrappers.FXMLWindow;
+import br.usp.icmc.ssc0103.net.ClientContext;
+import br.usp.icmc.ssc0103.wrap.FXMLController;
+import br.usp.icmc.ssc0103.wrap.FXMLWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+
+// Client view startup window dialog controller
+
+// Method names are sufficiently self-descriptive
 
 public class SetRemoteController implements FXMLController
 {
@@ -20,12 +24,6 @@ public class SetRemoteController implements FXMLController
 
     private FXMLWindow view;
 
-    @Override
-    public void setView(FXMLWindow view)
-    {
-        this.view = view;
-    }
-
     @FXML
     public void plugRemote(ActionEvent actionEvent)
     {
@@ -35,6 +33,12 @@ public class SetRemoteController implements FXMLController
         DefaultConfig.getConfig().clientGUI().show();
         actionEvent.consume();
         close();
+    }
+
+    @Override
+    public void setView(FXMLWindow view)
+    {
+        this.view = view;
     }
 
     @FXML

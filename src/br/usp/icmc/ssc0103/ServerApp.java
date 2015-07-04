@@ -1,5 +1,6 @@
 package br.usp.icmc.ssc0103;
 
+import br.usp.icmc.ssc0103.net.ServerContext;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

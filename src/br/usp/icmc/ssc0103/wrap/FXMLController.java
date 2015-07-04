@@ -1,4 +1,4 @@
-package br.usp.icmc.ssc0103.fxmlwrappers;
+package br.usp.icmc.ssc0103.wrap;
 
 @FunctionalInterface
 public interface FXMLController

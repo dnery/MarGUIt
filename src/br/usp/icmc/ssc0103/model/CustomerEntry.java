@@ -1,9 +1,10 @@
-package br.usp.icmc.ssc0103.models;
+package br.usp.icmc.ssc0103.model;
 
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 
+// Customer table entry model (Builder pattern can be seen here)
 public class CustomerEntry implements AbstractTableEntry, Serializable
 {
     private final SimpleStringProperty name;

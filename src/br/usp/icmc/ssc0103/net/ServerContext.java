@@ -1,6 +1,7 @@
-package br.usp.icmc.ssc0103;
+package br.usp.icmc.ssc0103.net;
 
 import java.io.IOException;
+import java.net.ServerSocket;
 
 public class ServerContext
 {
@@ -16,7 +17,8 @@ public class ServerContext
         }
     }
 
-    private Listener listener;
+    // Attributes
+    private ServerSocket serverSocket;
 
     // Static block singleton constructor
     private ServerContext() {}
@@ -24,16 +26,27 @@ public class ServerContext
     // Static block singleton context getter
     public static ServerContext getContext() { return CONTEXT; }
 
+    // Static block singleton work-around init
     private void contextInit() throws IOException
     {
-        listener = new Listener();
-        listener.start();
+        serverSocket = new ServerSocket(0);
+
+        Thread loop = new Thread(new ServerListener(serverSocket));
+        loop.setDaemon(true);
+        loop.start();
     }
 
+    // Print debug message
     public void debug(String message)
     {
         System.out.println(message);
     }
 
-    public Listener getListener() { return listener; }
+    // Print error message
+    public void dedoh(String message)
+    {
+        System.err.println(message);
+    }
+
+    public ServerSocket getServerSocket() { return serverSocket; }
 }
