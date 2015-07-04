@@ -2,7 +2,7 @@
 
 ## Sumario
 * [Introducao](#introducao)
-* [ExecuÁ„o](#execucao)
+* [Execu√ß√£o](#execucao)
 * [Consideracoes](#consideracoes)
 * [Contribuidores](#contribuidores)
 
@@ -10,38 +10,40 @@
 
 Aplicativo de Mercado Virtual implementado no formato de uma GUI interativa.
 
-As seguintes funcionalidades est„o implementadas:
+As seguintes funcionalidades est√£o implementadas:
 
 * Cadastro de produtos pelo lado de servidor
-* Cadastro de usu·rios pelo lado de usu·rio (Parcialmente)
-* AtualizaÁ„o da lista de produtos pelo lado de usu·rio (Parcialmente)
+* Cadastro de usu√°rios pelo lado de usu√°rio (Parcialmente)
+* Atualiza√ß√£o da lista de produtos pelo lado de usu√°rio (Parcialmente)
 
-Devido ‡ ocorrÍncias internas no grupo n„o houve tempo suficiente para
-finalizar o aplicativo todo. **Sejam bondosos na correÁ„o. Pls :).**
+Padr√µes de projeto como Singleton, Observer e Builder podem ser visto
+por entre os fontes. Devido √† ocorr√™ncias internas no grupo n√£o houve
+tempo suficiente parafinalizar o aplicativo todo. 
+**Sejam bondosos na corre√ß√£o. Pls :)**
 
-<h2 id="execucao">ExecuÁ„o</h2>
+<h2 id="execucao">Execu√ß√£o</h2>
 
-A aplicaÁ„o foi desenvolvida sob a plataforma IntelliJ IDEA Ultimate 14 e
-possui uma estrutura relativamente complexa de pacotes para organizaÁ„o.
-Por essa raz„o, È recomendado executar a aplicaÁ„o pelos `.jar`
-providenciados no repositÛrio. Estes se encontram no diretÛrio out, em seus
-devidos subdiretÛrios (Um para lado de de servidor, outro para lado de
+A aplica√ß√£o foi desenvolvida sob a plataforma IntelliJ IDEA Ultimate 14 e
+possui uma estrutura relativamente complexa de pacotes para organiza√ß√£o.
+Por essa raz√£o, √© recomendado executar a aplica√ß√£o pelos `.jar`
+providenciados no reposit√≥rio. Estes se encontram no diret√≥rio out, em seus
+devidos subdiret√≥rios (Um para lado de de servidor, outro para lado de
 cliente).
 
-Em seu devido subdiretÛrio, execute:
+Em seu devido subdiret√≥rio, execute:
 ```
 java -jar <nomedopacote>
 ```
-Onde `<nomedopacote>`, de acordo com a estrutura padr„o, pode ser `server-app`
-ou `client-app`. As interfaces s„o bem intuitivas e auto-explicativas (Para
-n„o restar d˙vida, ao iniciar a aplicaÁ„o servidor, clique em `Server Info`
-para obter as informaÁıes de socket do mesmo).
+Onde `<nomedopacote>`, de acordo com a estrutura padr√£o, pode ser `server-app`
+ou `client-app`. As interfaces s√£o bem intuitivas e auto-explicativas (Para
+n√£o restar d√∫vida, ao iniciar a aplica√ß√£o servidor, clique em `Server Info`
+para obter as informa√ß√µes de socket do mesmo).
 
 <h2 id="consideracoes">Consideracoes</h2>
 
-Como j· dito na introduÁ„o, n„o conseguimos (Por razıes internas) finalizar a
-implementaÁ„o do aplicativo no tempo de publicaÁ„o dessa release. Houve uma
-m· delegaÁ„o de tarefas dentro do grupo e o resultado foi o ocorrido. Pedimos
+Como j√° dito na introdu√ß√£o, n√£o conseguimos (Por raz√µes internas) finalizar a
+implementa√ß√£o do aplicativo no tempo de publica√ß√£o dessa release. Houve uma
+m√° delega√ß√£o de tarefas dentro do grupo e o resultado foi o ocorrido. Pedimos
 desculpas aos corretores.
 
 <h2 id="contribuidores">Contribuidores</h2>
