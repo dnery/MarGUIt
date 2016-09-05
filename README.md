@@ -1,4 +1,4 @@
-# SCC0103 - Trabaho 4 - Market Management Interactive GUI Application
+# MarGUIt: Tiny client-server marketing GUI application (SCC0103)
 
 ## Sumario
 * [Introducao](#introducao)
@@ -6,7 +6,7 @@
 * [Consideracoes](#consideracoes)
 * [Contribuidores](#contribuidores)
 
-<h2 id="introducao">Introducao</h2>
+<h2 id="introducao">Introdução</h2>
 
 Aplicativo de Mercado Virtual implementado no formato de uma GUI interativa.
 
@@ -17,8 +17,8 @@ As seguintes funcionalidades estão implementadas:
 * Atualização da lista de produtos pelo lado de usuário (Parcialmente)
 
 Padrões de projeto como Singleton, Observer e Builder podem ser visto
-por entre os fontes. Devido à ocorrências internas no grupo não houve
-tempo suficiente parafinalizar o aplicativo todo. 
+por entre os fontes, como requisitado em especificação. Devido à ocorrências
+internas no grupo não houve tempo suficiente para finalizar a aplicação toda.
 **Sejam bondosos na correção. Pls :)**
 
 <h2 id="execucao">Execução</h2>
@@ -35,11 +35,11 @@ Em seu devido subdiretório, execute:
 java -jar <nomedopacote>
 ```
 Onde `<nomedopacote>`, de acordo com a estrutura padrão, pode ser `server-app`
-ou `client-app`. As interfaces são bem intuitivas e auto-explicativas (Para
+ou `client-app`. As interfaces são bem intuitivas e auto explicativas (Para
 não restar dúvida, ao iniciar a aplicação servidor, clique em `Server Info`
 para obter as informações de socket do mesmo).
 
-<h2 id="consideracoes">Consideracoes</h2>
+<h2 id="consideracoes">Considerações</h2>
 
 Como já dito na introdução, não conseguimos (Por razões internas) finalizar a
 implementação do aplicativo no tempo de publicação dessa release. Houve uma
