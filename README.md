@@ -1,4 +1,6 @@
-# MarGUIt: Tiny client-server marketing GUI application (SCC0103)
+# MarGUIt
+A tiny client-server marketing GUI application. Object oriented
+programming class assignment 4 (SCC0103).
 
 ## Sumario
 * [Introducao](#introducao)
